@@ -1,7 +1,7 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useCopilotAction, useCopilotReadable } from "@copilotkit/react-core";
-import { useFetchPRDetails } from "../userInputService";
+import { useFetchPRDetails } from "../useFetchPRDetails.js";
 import {
   getHacktoberfestData,
   getDevfestData,

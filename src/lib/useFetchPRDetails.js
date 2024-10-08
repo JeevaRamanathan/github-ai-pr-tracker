@@ -40,7 +40,6 @@ export const useFetchPRDetails = (
           });
 
           const newPRs = data?.search.nodes || [];
-
           setAllData((prevData) => [...prevData, ...newPRs]);
 
           const pageInfo = data?.search.pageInfo || {};

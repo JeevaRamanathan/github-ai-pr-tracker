@@ -44,7 +44,6 @@ An AI-powered tool designed to efficiently track your GitHub pull requests acros
     ```bash
     npm run dev
 
-
 ## Contributing
 Contributions are welcome! Follow these steps to set up the project locally and start contributing🎉.
 
