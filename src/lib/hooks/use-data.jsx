@@ -82,7 +82,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const repos = await getDevFestRepos();
+        const repos = getDevFestRepos();
         console.log("Devfest", repos);
         setDevFestRepos(repos.data);
       } catch (error) {
@@ -151,7 +151,7 @@ export const DataProvider = ({ children }) => {
   useCopilotAction({
     name: "fetchData",
     description:
-      "Fetch the Pull Request details with the given data. Set the default date range as October 1 - October 30, 2024 if it's not specified.",
+      "Fetch the Pull Request details with the given data. Set the default date range as October 1 - October 31, 2024 if it's not specified.",
     parameters: [
       {
         name: "event",
@@ -185,7 +185,7 @@ export const DataProvider = ({ children }) => {
         setUserName(username);
         setDateRange({ from, to });
         setSelectedEvent(event);
-        await fetchPRDetails();
+        fetchPRDetails();
       } catch (error) {
         console.error("Error fetching PR details:", error);
       }

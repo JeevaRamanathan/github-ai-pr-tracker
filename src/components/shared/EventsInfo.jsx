@@ -27,7 +27,7 @@ export const EventsInfo = () => {
                   Hacktoberfest
                 </h3>
                 <p className="text-gray-700 dark:text-slate-400">
-                  PRs/MRs must be created between October 1 and October 30. Your
+                  PRs/MRs must be created between October 1 and October 31. Your
                   PRs/MRs need to be either merged, labeled with
                   "hacktoberfest-accepted", or be within a repository that has
                   the "hacktoberfest" topic. More details on  <a
@@ -44,7 +44,7 @@ export const EventsInfo = () => {
               <div>
                 <h3 className="text-lg font-bold underline">DevFest</h3>
                 <p className="text-gray-700 dark:text-slate-400">
-                  PRs/MRs must be created between October 1 and October 30 of 2024, and
+                  PRs/MRs must be created between October 1 and October 31 of 2024, and
                   should be in repositories that are whitelisted by DevFest (
                   <a
                     href="https://devfest.ai/repositories"
@@ -61,7 +61,7 @@ export const EventsInfo = () => {
               <div>
                 <h3 className="text-lg font-bold underline">Taipy - Hacktoberfest</h3>
                 <p className="text-gray-700 dark:text-slate-400">
-                  PRs/MRs must be created between October 1 and October 30 of 2024.
+                  PRs/MRs must be created between October 1 and October 31 of 2024.
                   Contributions should be made to the{" "}
                   <a
                     href="https://github.com/Avaiga/taipy/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest"
