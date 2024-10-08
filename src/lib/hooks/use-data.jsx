@@ -82,7 +82,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const repos = getDevFestRepos();
+        const repos = await getDevFestRepos();
         console.log("Devfest", repos);
         setDevFestRepos(repos.data);
       } catch (error) {
