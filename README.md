@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## AI Powered Github Pull Request Tracker
 
-## Getting Started
+![GitHub stars](https://img.shields.io/github/stars/jeevaramanathan/github-ai-pr-tracker?style=social)
+![GitHub forks](https://img.shields.io/github/forks/jeevaramanathan/github-ai-pr-tracker?style=social)
+![GitHub issues](https://img.shields.io/github/issues/jeevaramanathan/github-ai-pr-tracker)
+![GitHub license](https://img.shields.io/github/license/jeevaramanathan/github-ai-pr-tracker)
+![GitHub last commit](https://img.shields.io/github/last-commit/jeevaramanathan/github-ai-pr-tracker)
 
-First, run the development server:
+An AI-powered tool designed to efficiently track your GitHub pull requests across various open-source events like hacktoberfest, devfest, etc.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Key Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **AI Assistance:** Leverage AI for better insights and tracking of the status your pull requests.
+- **Comprehensive Filtering:** Easily filter PRs based on events like Hacktoberfest.
+- **User-Friendly Interface:** Enjoy a seamless experience built with modern technologies.
+- **Multi-Event Support:** Track PRs across different open-source events.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Technologies Used
 
-## Learn More
+- **Next.js** - Framework for building server-rendered React applications.
+- **React** - JavaScript library for building user interfaces.
+- **Tailwind CSS** - Utility-first CSS framework for rapid UI development.
+- **Shadcn-UI** - Components for building accessible and customizable UI.
+- **Apollo Client** - State management library for GraphQL.
+- **CopilotKit API** - For AI chatbot [[Copilot Kit]](https://github.com/copilotkit/copilotkit)
 
-To learn more about Next.js, take a look at the following resources:
+## Setup and Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/yourusername/github-ai-pr-tracker.git
+   cd github-ai-pr-tracker
+2. **Installing Dependencies**
+    ```bash
+    npm install
+3. **Setting up environment varaibles**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    Create a `.env.local` file by copying `.env.example`
+    
+    Place your GitHub personal access token and GraphQL API key in this file. You can obtain the GitHub token and groq API key here. [[Github Token](https://github.com/settings/tokens) | [Groq API Key](https://console.groq.com/keys)]
 
-## Deploy on Vercel
+4. **Run the Development Server**
+    ```bash
+    npm run dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contributing
+Contributions are welcome! Follow these steps to set up the project locally and start contributing🎉.
+
+1. **Fork** the repository.
+2. **Create a new branch** for your changes.
+3. **Make your changes** and test them locally.
+4. **Commit and push** to your branch.
+5. **Raise a PR** to the main repository.
+
+## License
+
+This project is licensed under the [Apache License 2.0](https://github.com/JeevaRamanathan/github-ai-pr-tracker/blob/main/LICENSE). 
