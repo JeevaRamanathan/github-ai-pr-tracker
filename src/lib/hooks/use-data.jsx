@@ -12,7 +12,7 @@ import {
 const DataContext = createContext(undefined);
 
 export const DataProvider = ({ children }) => {
-  const [selectedEvent, setSelectedEvent] = useState("hacktoberfest");
+  const [selectedEvent, setSelectedEvent] = useState("");
   const [dateRange, setDateRange] = useState({
     from: new Date("2024-10-01"),
     to: new Date("2024-10-31"),
@@ -159,13 +159,13 @@ export const DataProvider = ({ children }) => {
         description:
           "Event name to switch to (hacktoberfest, devfest, taipy, none)",
         enum: ["hacktoberfest", "devfest", "taipy", "none"],
-         required: true,
+        required: true,
       },
       {
         name: "from",
         type: "date",
         description: "Start date of the range (mmm d,yyyy)",
-         required: true,
+        required: true,
       },
       {
         name: "to",

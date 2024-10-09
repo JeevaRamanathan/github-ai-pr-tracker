@@ -5,7 +5,7 @@ import { useToast } from "@/lib/hooks/use-toast";
 import { useData } from "@/lib/hooks/use-data";
 import { Calendar as CalendarIcon, Loader2 } from "lucide-react";
 import { format } from "date-fns";
-
+import { useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
@@ -24,6 +24,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { PresetShare } from "./shared/preset-share";
+
 export function UserInput() {
   const {
     selectedEvent,
@@ -34,8 +36,48 @@ export function UserInput() {
     setUserName,
     fetchPRDetails,
     loadingState,
+    searchedData,
   } = useData();
   const { toast } = useToast();
+  const searchParams = useSearchParams();
+  const username = searchParams.get("username");
+  const from = searchParams.get("from");
+  const to = searchParams.get("to");
+  const event = searchParams.get("event");
+  const shared = searchParams.get("shared");
+
+  useEffect(() => {
+    if (username && from && to && event && shared == "true") {
+      if (username) setUserName(username);
+
+      if (from) {
+        const startDate = new Date(from);
+        console.log(startDate);
+
+        if (!isNaN(startDate)) {
+          setDateRange((prev) => ({ ...prev, from: startDate }));
+        } else {
+          console.error("Invalid date format for 'from':", from);
+        }
+      }
+      if (to) {
+        const endDate = new Date(to);
+        if (!isNaN(endDate)) {
+          setDateRange((prev) => ({ ...prev, to: endDate }));
+        } else {
+          console.error("Invalid date format for 'to':", to);
+        }
+      }
+      if (event) setSelectedEvent(event);
+      fetchPRDetails();
+    }
+  }, [username, from, to, event, shared]);
+
+  useEffect(() => {
+    if (!event) {
+      setSelectedEvent("hacktoberfest");
+    }
+  }, []);
 
   const eventDate = (date) => {
     const month = date.getMonth();
@@ -49,12 +91,19 @@ export function UserInput() {
     return true;
   };
 
+  const formatDate = (date) => {
+    return date && new Date(date).toISOString().split("T")[0];
+  };
+
   useEffect(() => {
-    if (selectedEvent === "hacktoberfest") {
+    if (selectedEvent === "hacktoberfest" && shared != "true") {
       setDateRange({ from: new Date(2024, 9, 1), to: new Date(2024, 9, 31) });
-    } else if (selectedEvent === "devfest" || selectedEvent === "taipy") {
+    } else if (
+      selectedEvent === "devfest" ||
+      (selectedEvent === "taipy" && shared != "true")
+    ) {
       setDateRange({ from: new Date(2024, 9, 1), to: new Date(2024, 9, 31) });
-    } else {
+    } else if (selectedEvent == "none" && shared != "true") {
       setDateRange({ from: new Date(), to: new Date() });
     }
   }, [selectedEvent, setDateRange]);
@@ -149,6 +198,16 @@ export function UserInput() {
             )}
             Check
           </Button>
+
+          {loadingState == "completed" && searchedData.length != 0 && (
+            <PresetShare
+              url={`${
+                window.location.origin
+              }?username=${userName}&event=${selectedEvent}&from=${formatDate(
+                dateRange?.from
+              )}&to=${formatDate(dateRange?.to)}&shared=true`}
+            />
+          )}
         </CardFooter>
       </Card>
     </div>
