@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/theme/provider.jsx";
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/react";
+import { Suspense } from "react";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -34,7 +35,7 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Suspense>{children}</Suspense>
           <Analytics />
         </ThemeProvider>
       </body>
