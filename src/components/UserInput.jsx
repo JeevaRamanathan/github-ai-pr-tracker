@@ -92,7 +92,12 @@ export function UserInput() {
   };
 
   const formatDate = (date) => {
-    return date && new Date(date).toISOString().split("T")[0];
+    if (!date) return;
+    const localDate = new Date(date);
+    localDate.setMinutes(
+      localDate.getMinutes() - localDate.getTimezoneOffset()
+    );
+    return localDate && localDate.toISOString().split("T")[0];
   };
 
   useEffect(() => {
