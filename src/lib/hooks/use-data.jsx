@@ -61,7 +61,7 @@ export const DataProvider = ({ children }) => {
     },
     taipy: {
       description:
-        "This context looks for pull requests (PRs) with the 'hacktoberfest' tag and within the 'github.com/avaiga/taipy' repository in 2025.",
+        "This context looks for pull requests (PRs) with the 'hacktoberfest' tag and within the 'github.com/avaiga/taipy' repository in 2024.",
     },
   };
 
@@ -159,13 +159,13 @@ export const DataProvider = ({ children }) => {
         description:
           "Event name to switch to (hacktoberfest, devfest, taipy, none)",
         enum: ["hacktoberfest", "devfest", "taipy", "none"],
-        required: true,
+         required: true,
       },
       {
         name: "from",
         type: "date",
         description: "Start date of the range (mmm d,yyyy)",
-        required: true,
+         required: true,
       },
       {
         name: "to",
