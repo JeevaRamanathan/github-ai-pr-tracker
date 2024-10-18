@@ -48,12 +48,6 @@ export function DataTable({ columns, data }) {
                         maxWidth: header.column.columnDef.size,
                       }}
                     >
-                      {/* {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )} */}
                       {header.isPlaceholder ? null : (
                         <>
                           {header.column.columnDef.header}
