@@ -1,17 +1,28 @@
 import { DataTable } from "@/components/shared/data-table";
 import { columns } from "@/lib/constants/columns";
 import { useData } from "@/lib/hooks/use-data";
-import { Skeleton } from "./ui/skeleton";
-import { transformDataToResultTable } from "@/lib/utils";
+import { Button } from "./ui/button";
+import { transformDataToResultTable, downloadCSV } from "@/lib/utils";
+import { useToast } from "@/lib/hooks/use-toast";
 
 export function ResultTable() {
   const { searchedData, loadingState } = useData();
+  const { toast } = useToast();
 
   const transformedData = transformDataToResultTable(searchedData);
   return (
     <div className="container mx-auto p-5">
       {loadingState != "idle" && searchedData.length > 0 && (
-        <DataTable columns={columns} data={transformedData}  />
+        <>
+          <div className="flex justify-end mb-4">
+            <Button
+              onClick={() => downloadCSV(transformedData, toast)}
+            >
+              Download
+            </Button>
+          </div>
+          <DataTable columns={columns} data={transformedData} />
+        </>
       )}
 
       {loadingState == "completed" && searchedData.length == 0 && (

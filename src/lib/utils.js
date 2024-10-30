@@ -6,7 +6,6 @@ import {
   GitMerge,
 } from "lucide-react";
 // import {FETCH_PR_DETAILS_BY_USER,FETCH_PR_DETAILS_BY_DATE} from "@/lib/constants/queries"
-
 export function cn(...inputs) {
   return twMerge(clsx(inputs));
 }
@@ -136,4 +135,40 @@ export const getTaipyData = (data) => {
   });
 
   return filteredData;
+};
+
+export const downloadCSV = (data, toast) => {
+  try {
+    const csvContent = `${[
+      "PR Status",
+      "PR Title",
+      "Created At",
+      "Merged At",
+      "Lines Changed",
+      "Repository Owner",
+      "Diff Checker",
+    ].join(",")}\n${data
+      .map(
+        (pr) =>
+          `"${pr.state}", "${pr.title}", "${pr.createdAt}", "${pr.mergedAt}", "+${pr.linesChanged.additions} -${pr.linesChanged.deletions}", "${pr.repoOwner}","${pr.diffLink}"`
+      )
+      .join("\n")}`;
+    const encodedURI = `data:text/csv;charset=utf-8,${encodeURIComponent(
+      csvContent
+    )}`;
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedURI);
+    link.setAttribute("download", "pull_request_data.csv");
+    document.body.appendChild(link);
+    link.click();
+    toast({
+      title: "Download started successfully!",
+    });
+  } catch (e) {
+    console.log(e);
+    toast({
+      variant: "destructive",
+      title: "Uh oh! Something went wrong!",
+    });
+  }
 };
