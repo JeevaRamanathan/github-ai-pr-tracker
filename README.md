@@ -25,6 +25,13 @@ An AI-powered tool designed to efficiently track your GitHub pull requests acros
 - **Apollo Client** - State management library for GraphQL.
 - **CopilotKit API** - For AI chatbot [[Copilot Kit]](https://github.com/copilotkit/copilotkit)
 
+## Demo
+https://github.com/user-attachments/assets/32090699-a998-49dd-9fca-6cb4b82f6c1b
+
+![image](https://github.com/user-attachments/assets/5238b959-a41d-42a5-9d9c-1d336f85a1bc)
+
+
+
 ## Setup and Installation
 
 1. **Clone the Repository:**
