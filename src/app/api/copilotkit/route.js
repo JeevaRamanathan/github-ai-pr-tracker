@@ -5,7 +5,7 @@ import {
 } from "@copilotkit/runtime";
 import Groq from "groq-sdk";
 
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });  
 
 const copilotKit = new CopilotRuntime();
 
