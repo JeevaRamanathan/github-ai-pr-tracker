@@ -31,7 +31,7 @@ export default function ToDatePicker() {
         console.error("Invalid date format for 'from':", from);
       }
     }
-  }, []);
+  }, [to, setDateRange]);
 
   return (
     <div className="flex flex-col gap-3 w-full">

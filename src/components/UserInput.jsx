@@ -33,7 +33,7 @@ export function UserInput() {
     if (username && shared === "true") {
       setUserName(username);
     }
-  }, [username, shared]);
+  }, [username, shared, setUserName]);
 
   useEffect(() => {
     if (userName && shared === "true" && buttonRef.current) {

@@ -73,6 +73,70 @@ export function transformDataToResultTable(data) {
   }));
 }
 
+//has haacktoberfest or hacktoberfest-accepted label/tag in pr
+const hasHacktoberfestLabel = (labels) => {
+  return labels.nodes.some(
+    (label) =>
+      label.name.toLowerCase() === "hacktoberfest" ||
+      label.name.toLowerCase() === "hacktoberfest-accepted"
+  );
+};
+
+//has hacktoberfest topic in Repository
+const hasHacktoberfestTopic = (repository) => {
+  return repository.repositoryTopics.nodes.some(
+    (topic) => topic.topic.name.toLowerCase() === "hacktoberfest"
+  );
+};
+
+export const getDevFestRepos = async () => {
+  try {
+    const response = await fetch("/api/scrape");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching DevFest repositories:", error);
+    throw error;
+  }
+};
+
+export const getHacktoberfestData = (data) => {
+  const uniquePRs = new Set();
+  const filteredData = data.filter((pr) => {
+    const labelsMatch = hasHacktoberfestLabel(pr.labels);
+    const topicsMatch = hasHacktoberfestTopic(pr.repository);
+    if ((labelsMatch || topicsMatch) && !uniquePRs.has(pr.number)) {
+      uniquePRs.add(pr.number);
+      return true;
+    }
+    return false;
+  });
+  return filteredData;
+};
+
+export const getDevfestData = (data, devFestRepos) => {
+  const filteredData = data.filter((pr) => {
+    return devFestRepos.some(
+      (repo) => repo.toLowerCase() === pr.repository.nameWithOwner.toLowerCase()
+    );
+  });
+  return filteredData;
+};
+
+export const getTaipyData = (data) => {
+  const filteredData = data.filter((pr) => {
+    return (
+      pr.repository.nameWithOwner.toLowerCase() == "avaiga/taipy" &&
+      hasHacktoberfestLabel(pr.labels)
+    );
+  });
+
+  return filteredData;
+};
+
 export const downloadCSV = (data, toast) => {
   try {
     const csvContent = `${[

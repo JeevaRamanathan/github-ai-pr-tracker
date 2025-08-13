@@ -49,7 +49,7 @@ export const DataProvider = ({ children }) => {
       }
     }
     setSearchedData(eventData);
-  }, [allData, devFestRepos]);
+  }, [allData, devFestRepos, loadingState, selectedEvent]);
 
   const supportedEvents = {
     hacktoberfest: {
