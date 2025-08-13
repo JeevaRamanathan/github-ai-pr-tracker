@@ -1,4 +1,5 @@
 "use client";
+
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useCopilotAction, useCopilotReadable } from "@copilotkit/react-core";
 import { useFetchPRDetails } from "../useFetchPRDetails.js";
@@ -14,8 +15,8 @@ const DataContext = createContext(undefined);
 export const DataProvider = ({ children }) => {
   const [selectedEvent, setSelectedEvent] = useState("");
   const [dateRange, setDateRange] = useState({
-    from: new Date("2024-10-01"),
-    to: new Date("2024-10-31"),
+    from: "",
+    to: "",
   });
   const [userName, setUserName] = useState("");
   const [shouldFetch, setShouldFetch] = useState(false);
@@ -115,13 +116,13 @@ export const DataProvider = ({ children }) => {
       {
         name: "from",
         type: "date",
-        description: "Start date of the range (mmm d,yyyy)",
+        description: "Start date of the range (yyyy, mm, dd)",
         required: true,
       },
       {
         name: "to",
         type: "date",
-        description: "End date of the range (mmm d,yyyy)",
+        description: "End date of the range (yyyy, mm, dd)",
         required: true,
       },
     ],
@@ -151,7 +152,7 @@ export const DataProvider = ({ children }) => {
   useCopilotAction({
     name: "fetchData",
     description:
-      "Fetch the Pull Request details with the given data. Set the default date range as October 1 - October 31, 2024 if it's not specified.",
+      "Fetch the Pull Request details with the given data. Set the default date range as 2025-01-01(yyyy, mm, dd) - 2025-06-30, if it's not specified.",
     parameters: [
       {
         name: "event",

@@ -20,10 +20,9 @@ export default function Home() {
           <div className="bg-primary-foreground/40 dark:bg-primary/5">
             <Header />
             <div className="text-center italic mt-3 text-sky-700 font-bold">
-              Track Your GitHub Pull Requests for Various Open Source Events
-              with AI Assistance
+              Track PRs for Open Source Events with AI
             </div>
-            <div className="container">
+            <div className="container mx-auto">
               <UserInput />
               <ResultTable />
             </div>
@@ -35,9 +34,9 @@ export default function Home() {
             }
             defaultOpen={false}
             labels={{
-              title: "AI Powered Github Pull Request Tracker",
+              title: "PR Tracker",
               initial: [
-                "Hello there! 👋 I can assist you in retrieving the details of GitHub pull requests for events like Hacktoberfest, Devfest, or general submissions.",
+                "Hello there! 👋 I can assist you in retrieving the details of GitHub pull requests.",
                 "Please note: I'm currently using a free version of the Groq model, so responses may sometimes be slower or less accurate, and too many frequent requests at same time may result in rate limit exceeded errors with empty responses. Please try after sometime in such cases. But I'm continually improving!",
               ],
             }}
