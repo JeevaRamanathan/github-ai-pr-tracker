@@ -10,7 +10,6 @@ import {
   getFilteredRowModel,
 } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
-import { TableSkeleton } from "@/components/shared/table-skeleton";
 import {
   Table,
   TableBody,

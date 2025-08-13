@@ -55,7 +55,7 @@ export const useFetchPRDetails = (
     };
 
     fetchAllPages();
-  }, [shouldFetch, fetchPRs]);
+  }, [shouldFetch, fetchPRs, dateRange.from, dateRange.to, setLoadingState, setShouldFetch, username]);
 
   return { allData };
 };
